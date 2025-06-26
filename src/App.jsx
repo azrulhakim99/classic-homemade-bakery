@@ -5,7 +5,7 @@ const products = [
     id: 1,
     name: "Kek Coklat Moist",
     price: 35.0,
-    image: "https://drive.google.com/uc?export=view&id=17O2DbXuMCEAh84vKsITFTPDN1cuSXnCy"
+    image: "https://imgur.com/NlwaPpy"
   },
   {
     id: 2,
