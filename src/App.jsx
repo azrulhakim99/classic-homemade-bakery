@@ -5,19 +5,19 @@ const products = [
     id: 1,
     name: "Kek Coklat Moist",
     price: 35.0,
-    image: "https://via.placeholder.com/300x200?text=Kek+Coklat"
+    image: "https://drive.google.com/file/d/17O2DbXuMCEAh84vKsITFTPDN1cuSXnCy/view?usp=drive_link"
   },
   {
     id: 2,
     name: "Roti Sourdough",
     price: 20.0,
-    image: "https://via.placeholder.com/300x200?text=Sourdough"
+    image: "https://drive.google.com/file/d/183Q0ODQWx42xsGzLNEapSCgfW3dOnwQt/view?usp=drive_link"
   },
   {
     id: 3,
     name: "Tart Nenas Homemade",
     price: 25.0,
-    image: "https://via.placeholder.com/300x200?text=Tart+Nenas"
+    image: "https://drive.google.com/file/d/1xvSXqZFptevBofeureWxtS91ZLrW4HLN/view?usp=drive_link"
   }
 ];
 
