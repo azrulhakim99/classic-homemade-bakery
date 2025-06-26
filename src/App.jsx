@@ -48,7 +48,7 @@ ${cart
 
 Jumlah: RM${total.toFixed(2)}`
     );
-    window.location.href = `https://wa.me/60123456789?text=${message}`;
+    window.location.href = `https://wa.me/60122410741?text=${message}`;
   };
 
   return (
