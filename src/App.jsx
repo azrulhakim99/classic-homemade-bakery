@@ -28,7 +28,28 @@ export default function ClassicHomemadeBakery() {
     setCart((prev) => [...prev, product]);
   };
 
+  const removeFromCart = (indexToRemove) => {
+    setCart((prev) => prev.filter((_, index) => index !== indexToRemove));
+  };
+
+  const clearCart = () => {
+    setCart([]);
+  };
+
   const total = cart.reduce((sum, item) => sum + item.price, 0);
+
+  const handleCheckout = () => {
+    const message = encodeURIComponent(
+      `Hi! Saya nak order:
+
+${cart
+        .map((item) => `- ${item.name} (RM${item.price.toFixed(2)})`)
+        .join("\n")}
+
+Jumlah: RM${total.toFixed(2)}`
+    );
+    window.location.href = `https://wa.me/60123456789?text=${message}`;
+  };
 
   return (
     <div style={{ padding: '2rem', fontFamily: 'sans-serif' }}>
@@ -61,23 +82,39 @@ export default function ClassicHomemadeBakery() {
         {cart.length === 0 ? (
           <p>Troli kosong.</p>
         ) : (
-          <ul>
+          <ul style={{ listStyle: 'none', paddingLeft: 0 }}>
             {cart.map((item, index) => (
-              <li key={index} style={{ display: 'flex', justifyContent: 'space-between' }}>
-                <span>{item.name}</span>
-                <span>RM{item.price.toFixed(2)}</span>
+              <li key={index} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.5rem' }}>
+                <span>{item.name} - RM{item.price.toFixed(2)}</span>
+                <button
+                  onClick={() => removeFromCart(index)}
+                  style={{ backgroundColor: '#f87171', color: 'white', border: 'none', borderRadius: '0.3rem', padding: '0.2rem 0.5rem' }}
+                >
+                  Buang
+                </button>
               </li>
             ))}
           </ul>
         )}
-        <div style={{ marginTop: '1rem', fontWeight: 'bold' }}>
-          Jumlah: <span style={{ color: '#dc2626' }}>RM{total.toFixed(2)}</span>
-        </div>
-        <button
-          style={{ marginTop: '0.5rem', backgroundColor: '#16a34a', color: 'white', padding: '0.5rem', border: 'none', borderRadius: '0.5rem' }}
-        >
-          Checkout
-        </button>
+        {cart.length > 0 && (
+          <>
+            <div style={{ marginTop: '1rem', fontWeight: 'bold' }}>
+              Jumlah: <span style={{ color: '#dc2626' }}>RM{total.toFixed(2)}</span>
+            </div>
+            <button
+              onClick={handleCheckout}
+              style={{ marginTop: '0.5rem', backgroundColor: '#16a34a', color: 'white', padding: '0.5rem', border: 'none', borderRadius: '0.5rem', marginRight: '1rem' }}
+            >
+              Checkout WhatsApp
+            </button>
+            <button
+              onClick={clearCart}
+              style={{ marginTop: '0.5rem', backgroundColor: '#9ca3af', color: 'white', padding: '0.5rem', border: 'none', borderRadius: '0.5rem' }}
+            >
+              Kosongkan Troli
+            </button>
+          </>
+        )}
       </div>
     </div>
   );
